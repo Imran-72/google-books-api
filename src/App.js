@@ -16,6 +16,14 @@ const App = () => {
       )
       .then((response) => setCards(response.data.items));
   };
+  const handleSubmitT = () => {
+    axios
+      .get(
+        `https://www.googleapis.com/books/v1/volumes?q=${query}&maxResults=${maxResults}&startIndex=${startIndex}`
+      )
+      .then((response) => setCards(response.data.items));
+  };
+  handleSubmitT();
   return (
     <div className="app">
       <div className="wrapper">
