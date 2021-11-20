@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import BookCard from "./components/bookCard";
 
 const App = () => {
   const [startIndex, setStartIndex] = useState(1);
@@ -8,21 +9,6 @@ const App = () => {
   const [cards, setCards] = useState([]);
 
   console.log(cards);
-
-  const handleSubmit = () => {
-    axios
-      .get(
-        `https://www.googleapis.com/books/v1/volumes?q=${query}&maxResults=${maxResults}&startIndex=${startIndex}`
-      )
-      .then((response) => setCards(response.data.items));
-  };
-  const handleSubmit = () => {
-    axios
-      .get(
-        `https://www.googleapis.com/books/v1/volumes?q=${query}&maxResults=${maxResults}&startIndex=${startIndex}`
-      )
-      .then((response) => setCards(response.data.items));
-  };
 
   const handleSubmit = () => {
     axios
@@ -40,10 +26,13 @@ const App = () => {
         />
         <button onClick={handleSubmit}>поиск</button>
       </div>
-      <div>
+      <div className="d-flex">
         {cards &&
           cards.map((item) => (
-            <img src={item.volumeInfo.imageLinks.thumbnail} />
+            <BookCard item={item} />
+            // <div className="m-2">
+            //   <img src={item.volumeInfo.imageLinks.thumbnail} />
+            // </div>
           ))}
       </div>
     </div>
