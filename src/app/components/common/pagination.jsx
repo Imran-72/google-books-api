@@ -11,11 +11,11 @@ const Pagination = ({ itemsCount, pageSize, onPageChange, currentPage }) => {
       <ul className="pagination">
         {pages.map((page) => (
           <li
+            style={{ cursor: "pointer" }}
             key={page}
             className={"page-item " + (page === currentPage ? "active" : "")}
           >
             <a
-              role="button"
               className="page-link"
               onClick={() => {
                 onPageChange(page);
