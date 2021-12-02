@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import { Spinner } from "reactstrap";
 import "react-toastify/dist/ReactToastify.min.css";
@@ -18,6 +18,10 @@ function App() {
   const handlePageChange = (pageIndex) => {
     setCurrentPage(pageIndex);
   };
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [cards]);
 
   // Handle Search
 
